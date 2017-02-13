@@ -32,7 +32,7 @@ class Sidebar extends React.Component{
     return (
       <div className="layout-sidebar">
         <div className="layout-title">
-          <img className="layout-logo img-circle" src="../../../blog/images/user.jpg"/>
+          <img className="layout-logo img-circle" src="../../../../statics/images/user.jpg"/>
           <div className="layout-title-text" onClick = {this.showPopup}>
             <strong>快饿死的鱼</strong>
             <span className="glyphicon glyphicon-chevron-down"></span>

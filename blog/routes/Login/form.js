@@ -14,7 +14,7 @@ class Form extends React.Component {
   }
 
   render() {
-
+    console.log(this.props);
     return (
       <div className="row bella_login_form">
           <div className="col-sm-6 b-r">
@@ -40,6 +40,9 @@ class Form extends React.Component {
                           </div>自动登录
                       </label>
                   </div>
+                  <div className="form-group">
+                      <label style={{display:Boolean(this.props.login.error),color:red}}>{this.props.login.error}</label>
+                  </div>
               </form>
           </div>
           <div className="col-sm-6">
@@ -55,7 +58,6 @@ class Form extends React.Component {
 }
 
 Form.propTypes={
-  dispatch: React.PropTypes.func.isRequired,
-  loading: React.PropTypes.bool.isRequired
+  dispatch: React.PropTypes.func.isRequired
 }
 export default Form

@@ -20,8 +20,11 @@ export default class AboutMe extends React.Component{
                                     关于我
                                 </h5>
                             <ul>
-                              <li>会点前端技术，div+css啊，jQuery之类的，不是很精；</li>
-                              <li>热爱生活，热爱互联网，热爱新技术；有一个小的团队，在不断的寻求新的突破</li>
+                              <li>熟悉W3C标准，熟练掌握html+css，对表现与数据分离、Web语义化等有深刻理解</li>
+                              <li>熟练掌握Ajax,JavaScript,Jquery等前端技术。掌握前端面向对象编程思想</li>
+                              <li>熟练使用backbone前端框架，了解react,vue等前端主流框架</li>
+                              <li>了解网页seo,熟悉页面架构和性能优化</li>
+                              <li>了解nodejs模块的使用</li>
                             </ul>
                             <div className="user-button">
                                 <div className="row">

@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var port = 8000;
 var app = express();
 
+app.use("/", express.static(path.join(__dirname, '../../blog')));
+app.use(cookieParser());
 //session-store
 var LokiStore = require("connect-loki")(session);
 app.use(session({
@@ -14,8 +16,7 @@ app.use(session({
     secret: 'blog'
 }));
 
-app.use("/", express.static(path.join(__dirname, '../../blog')));
-app.use(cookieParser());
+
 // for parsing application/json
 app.use(bodyParser.json());
 // for parsing application/x-www-form-urlencoded
