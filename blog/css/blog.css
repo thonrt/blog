@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'fa-sign-in';
     /* IE9 Compat Modes */
-    src: url('../statics/font/icomoon.eot') format('embedded-opentype'), /* IE6-IE8 */
-    url('../statics/font/icomoon.woff') format('woff'), /* Modern Browsers */
-    url('../statics/font/icomoon.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../statics/font/icomoon.svg') format('svg');
+    src: url('../../statics/font/icomoon.eot') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../statics/font/icomoon.woff') format('woff'), /* Modern Browsers */
+    url('../../statics/font/icomoon.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../../statics/font/icomoon.svg') format('svg');
     /* Legacy iOS */
 }
 

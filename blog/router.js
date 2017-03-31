@@ -4,13 +4,13 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
 import Store from './store';
 import Login from './routes/Login/login';
-import DashBoardIndex from './routes/DashBoardIndex/index';
-import App from './component/App/app.component';
-import AboutMe from './pages/aboutme';
-import Article from './pages/article';
-import NewArticle from './pages/newArticle';
-import Contact from './pages/contact';
-import Manage from './pages/manage';
+import DashBoardIndex from './routes/DashBoardIndex/index.jsx';
+import App from './component/App/app.component.jsx';
+import AboutMe from './pages/aboutme.jsx';
+import Article from './pages/article.jsx';
+import NewArticle from './pages/newArticle.jsx';
+import Contact from './pages/contact.jsx';
+import Manage from './pages/manage.jsx';
 
 const history = syncHistoryWithStore(hashHistory,Store);
 export default class router extends React.Component{
