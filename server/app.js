@@ -8,12 +8,15 @@ var port = 8000;
 var app = express();
 var cors = require('cors');
 
-app.use(cors());
+
 app.use("/", express.static(path.join(__dirname, '../../blog')));
 app.use(cookieParser());
+
 //session-store
 var LokiStore = require("connect-loki")(session);
 app.use(session({
+    resave: false,
+    saveUninitialized: true,
     store: new LokiStore(),
     secret: 'blog'
 }));
@@ -26,7 +29,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
+app.use(cors());
 app.use(routes);
 
 //error message in dev enverioment

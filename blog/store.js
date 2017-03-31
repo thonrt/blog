@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import login from './reducers/login.reducer';
 import popup from './reducers/popup.reducer';
+import list from './reducers/list.reducer';
 
 //调用日志打印方法
 const loggerMiddleware = createLogger();
@@ -12,6 +13,7 @@ const middleware = [thunkMiddleware,loggerMiddleware];
 const rootReducer = combineReducers({
   login:login,
   popup:popup,
+  list:list,
   routing: routerReducer
 })
 

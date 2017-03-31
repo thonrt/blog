@@ -1,12 +1,13 @@
 var express = require('express');
 var Log = require('../controller/log.js');
+var List = require("../controller/list.js");
 
 var router = express.Router();
 
-router.get("/", function(req, res) {
-    res.send("hello world");
-});
 
-router.post("/login", Log.login);
+
+router.route("/login").post(Log.login);
+
+router.route("/get_all_list").get(List.getAllList);
 
 module.exports = router;

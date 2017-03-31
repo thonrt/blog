@@ -5,12 +5,13 @@ var login = function(req, res, next) {
     var userSession = req.session.user;
 
     if (!userSession) {
-        userSession = [];
+        userSession = {};
     }
     var postData = req.body;
     if (postData.username === "79976764@qq.com" && postData.password === "123456") {
         userSession.username = postData.username;
         userSession.password = postData.password;
+        req.session.user = userSession;
         res.json({
             "hint": "ok",
             "data": "登录成功"
@@ -22,7 +23,7 @@ var login = function(req, res, next) {
         });
     }
 
-    req.session.user = userSession;
+
 };
 
 module.exports = {

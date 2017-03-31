@@ -12,7 +12,7 @@
 /*header style*/
 
 .blog_header {
-    background-color: rgba(236, 227, 229, 0.2);
+    background-color: rgba(177, 164, 167, 0.2);
     padding-left: 0px;
     height: 60px;
 }
@@ -74,6 +74,7 @@
 .layout-contentbox.col-lg-10{
   padding-left: 0px;
   padding-right: 0px;
+  background: #f3f3f4;
 }
 
 .auto_login {
@@ -122,12 +123,12 @@
   position: absolute;
    height: 834px;
    width: 100%;
-   background-color: #ccc;
+   /*background-color: #ccc;*/
 }
 .mask{
   height: 834px;
   width:100%;
-  background-color: #ccc;
+  /*background-color: #ccc;*/
   display: none;
 
 }
@@ -137,4 +138,9 @@
   top:300px;
   z-index: 3;
   background-color: #fff;
+}
+
+.about_me{
+  overflow: hidden;
+  padding-top: 20px;
 }
