@@ -12,5 +12,4 @@ class Header extends React.Component{
   }
 }
 
-Header.propTypes = {router: React.PropTypes.object.isRequired}
 export default Header;

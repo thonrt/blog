@@ -1,4 +1,4 @@
-var express = require('express');
+let express = require('express');
 var routes = require("./routes/router");
 var path = require("path");
 var session = require('express-session');
@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var port = 8000;
 var app = express();
+var cors = require('cors');
 
+app.use(cors());
 app.use("/", express.static(path.join(__dirname, '../../blog')));
 app.use(cookieParser());
 //session-store

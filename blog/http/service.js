@@ -1,3 +1,5 @@
+
+import $ from "jquery"
 export default {
     requestData(option, successCallback, errorCallBack) {
         var server = "http://localhost:8000";

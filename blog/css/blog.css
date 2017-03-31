@@ -1,11 +1,10 @@
 @font-face {
     font-family: 'fa-sign-in';
-    src: url('font/icomoon.eot');
     /* IE9 Compat Modes */
-    src: url('../../statics/font/icomoon.eot') format('embedded-opentype'), /* IE6-IE8 */
-    url('../../statics/font/icomoon.woff') format('woff'), /* Modern Browsers */
-    url('../../statics/font/icomoon.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../../statics/font/icomoon.svg') format('svg');
+    src: url('../statics/font/icomoon.eot') format('embedded-opentype'), /* IE6-IE8 */
+    url('../statics/font/icomoon.woff') format('woff'), /* Modern Browsers */
+    url('../statics/font/icomoon.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../statics/font/icomoon.svg') format('svg');
     /* Legacy iOS */
 }
 
@@ -14,7 +13,7 @@
 
 .blog_header {
     background-color: rgba(236, 227, 229, 0.2);
-    margin-left: 200px;
+    padding-left: 0px;
     height: 60px;
 }
 
@@ -32,7 +31,6 @@
 /*sidebar*/
 
 .layout-sidebar {
-    width: 200px;
     position: absolute;
     ;
     top: 0px;
@@ -69,8 +67,13 @@
 /*context*/
 
 .layout-contentbox {
-    margin-left: 200px;
-    height: 200px;
+    position: absolute;
+    height: 100%;
+    margin-left: 213px;
+}
+.layout-contentbox.col-lg-10{
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .auto_login {
@@ -95,7 +98,6 @@
     border: 0px;
     opacity: 0;
 }
-
 .bella_login_form {
     width: 400px;
     margin-left: 30%;
@@ -108,4 +110,31 @@
 .fa-sign-in:after {
     font-family: "fa-sign-in";
     content: '\ea34'
+}
+
+.ibox-operate{
+  margin:20px 10px 0 10px;
+}
+.ibox-operate .btn{
+  margin-right: 20px;
+}
+.popup{
+  position: absolute;
+   height: 834px;
+   width: 100%;
+   background-color: #ccc;
+}
+.mask{
+  height: 834px;
+  width:100%;
+  background-color: #ccc;
+  display: none;
+
+}
+.sweet-alert{
+  position:absolute;
+  left:300px;
+  top:300px;
+  z-index: 3;
+  background-color: #fff;
 }

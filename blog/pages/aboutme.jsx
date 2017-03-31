@@ -1,4 +1,5 @@
 import React from 'react';
+import userImg from "../../statics/images/user.jpg"
 
 export default class AboutMe extends React.Component{
 
@@ -11,7 +12,7 @@ export default class AboutMe extends React.Component{
                     </div>
                     <div>
                         <div className="ibox-content no-padding border-left-right">
-                            <img alt="image" className="img-responsive" src="images/user.jpg" />
+                            <img alt="image" className="img-responsive" src={userImg} />
                         </div>
                         <div className="ibox-content profile-content">
                             <h4><strong>Bella-Duan</strong></h4>
