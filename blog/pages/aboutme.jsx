@@ -47,7 +47,7 @@ class RightPart extends React.Component{
   }
 
   render(){
-    console.log(this.state);
+  let list = this.props.list;
     return (
 
       <div className="float-e-margins col-lg-8">
@@ -66,160 +66,31 @@ class RightPart extends React.Component{
                     <div className="ibox-content">
                         <div>
                             <div className="feed-activity-list">
-
-                            <div className="feed-element">
-                                <a href="profile.html#" className="pull-left">
-                                    <img alt="image" className="img-circle" src={userImg} />
-                                </a>
-                                <div className="media-body ">
-                                    <small className="pull-right">2小时前</small>
-                                    <strong>作家崔成浩</strong> 抽奖中了20万
-                                    <br />
-                                    <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                    <div className="pull-right">
-                                        <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                        <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                        <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
+                            {
+                            list.map((item,index) =>{
+                              return (
+                                <div className="feed-element">
+                                    <a href="profile.html#" className="pull-left">
+                                        <img alt="image" className="img-circle" src={userImg} />
+                                    </a>
+                                    <div className="media-body ">
+                                        <small className="pull-right">2小时前</small>
+                                        <strong>{item.author}发表了</strong> {item.title}
+                                        <br />
+                                        <small className="text-muted">{item.date}</small>
+                                        <div className="pull-right">
+                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
+                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
+                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
+                                        </div>
                                     </div>
                                 </div>
+                              );
+                            })
+                            }
                             </div>
-                            <div className="feed-element">
-                                <a href="profile.html#" className="pull-left">
-                                    <img alt="image" className="img-circle" src={userImg} />
-                                </a>
-                                <div className="media-body ">
-                                    <small className="pull-right">2小时前</small>
-                                    <strong>作家崔成浩</strong> 抽奖中了20万
-                                    <br />
-                                    <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                    <div className="pull-right">
-                                        <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                        <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                        <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="feed-element">
-                                    <a href="profile.html#" className="pull-left">
-                                        <img alt="image" className="img-circle" src={userImg} />
-                                    </a>
-                                    <div className="media-body ">
-                                        <small className="pull-right">2小时前</small>
-                                        <strong>作家崔成浩</strong> 抽奖中了20万
-                                        <br />
-                                        <small className="text-muted">今天 09:27 来自 Koryolink iPhone</small>
-                                        <div className="pull-right">
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-thumbs-up"></i> 赞 </a>
-                                            <a className="btn btn-xs btn-white"><i className="fa fa-heart"></i> 收藏</a>
-                                            <a className="btn btn-xs btn-primary"><i className="fa fa-pencil"></i> 评论</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
                             <button className="btn btn-primary btn-block m"><i className="fa fa-arrow-down"></i> 显示更多</button>
-
                         </div>
-
                     </div>
                 </div>
     );
@@ -232,7 +103,7 @@ class AboutMe extends React.Component{
     return(
     <div className="about_me">
       <LeftPart />
-      <RightPart dispatch = { this.props.dispatch }/>
+      <RightPart dispatch = { this.props.dispatch } list = {this.props.list.list}/>
     </div>
     );
   }

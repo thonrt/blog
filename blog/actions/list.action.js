@@ -1,10 +1,21 @@
 import {
     GET_ALL_LIST,
     GET_ALL_LIST_SUCCESS,
-    GET_ALL_LIST_FAILED
+    GET_ALL_LIST_FAILED,
+    CURRETN_ITEM
 } from '../constants/action';
 
 import $http from '../http/service.js';
+
+
+export function setCurrentItemAction(dataId){
+  return {
+    type:CURRETN_ITEM,
+    payload:{
+      dataId:dataId
+    }
+  }
+}
 
 export function getAllListAction() {
 
@@ -27,7 +38,7 @@ export function getAllListAction() {
 
 }
 
-function getAllListSuccessAction(list = []) {
+function getAllListSuccessAction(list) {
     return {
         type: GET_ALL_LIST_SUCCESS,
         payload:{

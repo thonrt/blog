@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import DeleteArticle from "./operate/delete.jsx"
-import {} from "../actions/popup.action"
+import {showPopupAction,closePopupAction} from "../actions/popup.action"
+import {getAllListAction,setCurrentItemAction} from "../actions/list.action.js";
+import { connect } from 'react-redux';
 
 class SingleArticle extends React.Component{
-  handleUpdate(){
-        console.log(this);
-    this.props.showPopup();
 
-    ReactDom.render(<DeleteArticle />, $('.popup')[0]);
+
+  handleUpdate(dataId){
+
+    }
+
+  handleDelete(e){
+    var dataId = e.target.getAttribute('data-id');
+    this.props.dispatch(setCurrentItemAction(dataId));
+    this.props.showPopup();
   }
-  handleDelete(){}
   render(){
     let article = this.props.article;
-    let showPopup = this.props.showPopup;
+    let dataId = article.id;
     return (
-      <div className="ibox">
+      <div className="ibox article_list" data-id={dataId}>
         <div className="ibox-content">
           <div className="pull-left">
             <a href="{article.website}" className="btn-link">
@@ -23,55 +29,67 @@ class SingleArticle extends React.Component{
             </a>
           </div>
           <div className="pull-right ibox-operate">
-            <button className="btn btn-primary btn-xs" type="button" onClick={()=>{this.props.showPopup()}} >修改</button>
-            <button className="btn btn-primary btn-xs" type="button" onClick = {this.handleDelete}>删除</button>
+
+            <button className="btn btn-primary btn-xs" type="button" onClick={()=>{this.handleUpdate()}} >修改</button>
+            <button className="btn btn-primary btn-xs" type="button" data-id={dataId} onClick={(e)=>{this.handleDelete(e)}}>删除</button>
           </div>
+          <div className="row" style={{clear:"both"}}>
+            <div className="col-md-6">
+              <span>标签：</span>
+              <button className="btn btn-primary btn-xs" type="button">{article.keyWords}</button>
+            </div>
         </div>
 
-        <div className="row" style={{clear:"both"}}>
-          <div className="col-md-6">
-            <span>标签：</span>
-            <button className="btn btn-primary btn-xs" type="button">{article.keyWords}</button>
-          </div>
+
         </div>
       </div>);
   }
 }
 
-export default class ArticleList extends React.Component{
+class ArticleList extends React.Component{
+
+
+  //插入真是DOM之前调用
+  componentWillMount(){
+    this.props.dispatch(getAllListAction());
+  }
+
   showPopup(){
-    this.props.dispatch(showPopupAction());
+    this.dispatch(showPopupAction());
   }
   render(){
-    let articleList = [{
-      title:"webpack 热更新",
-      website:"http://www.cnblogs.com/thonrt/p/6595033.html",
-      keyWords:"webpack"
-    },{
-      title:"webpack 热更新",
-      website:"http://www.cnblogs.com/thonrt/p/6595033.html",
-      keyWords:"webpack"
-    },{
-      title:"webpack 热更新",
-      website:"http://www.cnblogs.com/thonrt/p/6595033.html",
-      keyWords:"webpack"
-    },{
-      title:"webpack 热更新",
-      website:"http://www.cnblogs.com/thonrt/p/6595033.html",
-      keyWords:"webpack"
-    }];
-    console.log(this.state);
-    // console.log(state);
+    let articleList = this.props.list.list;
     let showPopup = this.showPopup;
+    let dispatch = this.props.dispatch;
+    let deleteOption = this.props.delete;
     return(
     <div className="col-lg-12">
 
       {
-        articleList.map(function(article){
-          return (<SingleArticle article = {article} showPopup = {showPopup}/>);
+        articleList.map((item,index) =>{
+          return (<SingleArticle article = {item} showPopup = {showPopup} dispatch={dispatch} key ={index} deleteOption={deleteOption}/>);
         })
       }
     </div>
     );
   }
 }
+
+
+// 验证组件中的参数类型
+ArticleList.propTypes = {
+    dispatch: React.PropTypes.func.isRequired
+}
+
+// 获取state中的lists值
+const mapStateToProps = state => {
+    return {
+        list: state.list,
+        popup:state.popup,
+        delete:state.delete,
+        dataId:state.dataId
+    }
+}
+
+
+export default connect(mapStateToProps)(ArticleList)

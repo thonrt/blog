@@ -1,24 +1,33 @@
 import {
   GET_ALL_LIST_SUCCESS,
-  GET_ALL_LIST_FAILED
+  GET_ALL_LIST_FAILED,
+  CURRETN_ITEM
 } from '../constants/action';
 
 const initialState = {
     list: [],
-    error: ""
+    error: "",
+    dataId:null
 };
 
 let switchMap = {};
 
-switchMap[GET_ALL_LIST_SUCCESS] = (state) => {
+switchMap[GET_ALL_LIST_SUCCESS] = (state,action) => {
+
     return Object.assign({}, state, {
-        list: state.list
+        list: action.payload.list
     })
 };
 
-switchMap[GET_ALL_LIST_FAILED] = (state) => {
+switchMap[GET_ALL_LIST_FAILED] = (state,action) => {
     return Object.assign({}, state, {
-        error: state.error
+        error: action.payload.error
+    })
+};
+
+switchMap[CURRETN_ITEM] = (state,action) => {
+    return Object.assign({}, state, {
+        dataId: action.payload.dataId
     })
 };
 

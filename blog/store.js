@@ -5,6 +5,7 @@ import createLogger from 'redux-logger';
 import login from './reducers/login.reducer';
 import popup from './reducers/popup.reducer';
 import list from './reducers/list.reducer';
+import deleteReducer from "./reducers/delete.reducer";
 
 //调用日志打印方法
 const loggerMiddleware = createLogger();
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   login:login,
   popup:popup,
   list:list,
+  delete:deleteReducer,
   routing: routerReducer
 })
 

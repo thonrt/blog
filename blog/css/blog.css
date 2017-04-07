@@ -103,7 +103,6 @@
     width: 400px;
     margin-left: 30%;
     margin-top: 20%;
-    background-color: #fff;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 }
@@ -123,7 +122,15 @@
   position: absolute;
    height: 834px;
    width: 100%;
-   /*background-color: #ccc;*/
+   background-color: rgba(125, 117, 117, 0.23);
+   z-index:10;
+   display: none;
+}
+.popup .sweet-alert{
+  position: relative;
+  left:50%;
+  top:40%;
+  display: block;
 }
 .mask{
   height: 834px;
@@ -132,15 +139,13 @@
   display: none;
 
 }
-.sweet-alert{
-  position:absolute;
-  left:300px;
-  top:300px;
-  z-index: 3;
-  background-color: #fff;
-}
 
 .about_me{
   overflow: hidden;
   padding-top: 20px;
+}
+
+    /*article_list*/
+.article_list .ibox-content{
+  background-color: #f3f3f4
 }

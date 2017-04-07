@@ -11,6 +11,7 @@ import Article from './pages/article.jsx';
 import NewArticle from './pages/newArticle.jsx';
 import Contact from './pages/contact.jsx';
 import Manage from './pages/manage.jsx';
+import Delete from './pages/operate/delete.jsx';
 
 const history = syncHistoryWithStore(hashHistory,Store);
 export default class router extends React.Component{
@@ -41,8 +42,10 @@ export default class router extends React.Component{
                 <Route path="/contact" component={Contact}></Route>
                 <Route path="/manage" component={Manage}></Route>
               </Route>
+
             </Route>
           </Router>
+
         </Provider>
       );
     }
