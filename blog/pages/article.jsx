@@ -54,6 +54,24 @@ class ArticleList extends React.Component{
     this.props.dispatch(getAllListAction());
   }
 
+  componentWillReceiveProps(nextProps){
+    let state = this.state || nextProps;
+    if(state.delete.delete_success){
+      this.props.dispatch(getAllListAction());
+      this.setState({delete:{delete_success:false}});
+    }
+
+  }
+
+  shouldComponentUpdate(nextProps,nextState){
+    let listLength = this.props.list.list.length;
+    let nextListLength = nextProps.list.list.length;
+    if(listLength !== nextListLength){
+      return true;
+    }
+    return false;
+  }
+
   showPopup(){
     this.dispatch(showPopupAction());
   }
@@ -62,6 +80,10 @@ class ArticleList extends React.Component{
     let showPopup = this.showPopup;
     let dispatch = this.props.dispatch;
     let deleteOption = this.props.delete;
+
+    if(articleList.length <1){
+      return null;
+    }
     return(
     <div className="col-lg-12">
 

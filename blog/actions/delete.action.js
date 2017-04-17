@@ -1,6 +1,7 @@
 import {
   CANCEL_DELETE,
-  CONFIRM_DELETE
+  DELETE_SUCESS,
+  DELETE_FAIL
 } from '../constants/action';//引入action常量名
 
 import $http from '../http/service.js';
@@ -9,7 +10,7 @@ export function cancelDeleteAction(user){
   return {
     type:CANCEL_DELETE,
     payload:{
-      delete:false,
+      delete_home:false,
       cancel_delete:true
     }
   }
@@ -17,19 +18,21 @@ export function cancelDeleteAction(user){
 
 function deleteFailedAction(error){
   return {
-    type:CANCEL_FAIL,
+    type:DELETE_FAIL,
     payload:{
       error:error,
-      cancel_success:false
+      delete_home:false,
+      delete_success:false
     }
   }
 }
 
 function deleteSuccessAction(){
   return {
-    type:CANCEL_FAIL,
+    type:DELETE_SUCESS,
     payload:{
-      cancel_success:true
+      delete_home:false,
+      delete_success:true
     }
   }
 }
@@ -53,11 +56,5 @@ export function confirmDeleteAction(dataId){
   }
 
 
-  return {
-    type:CONFIRM_DELETE,
-    payload:{
-      delete:false,
-      confirm_delete:true
-    }
-  };
+
 }

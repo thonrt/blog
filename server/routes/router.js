@@ -8,6 +8,9 @@ var router = express.Router();
 
 router.route("/login").post(Log.login);
 
-router.route("/get_all_list").get(List.getAllList);
+
+router.route("/item/:dataId")
+  .get(List.getAllList)
+  .delete(List.deleteList);
 
 module.exports = router;

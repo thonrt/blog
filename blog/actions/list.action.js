@@ -21,7 +21,7 @@ export function getAllListAction() {
 
     return (dispatch) => {
         let option = {
-            url: "/get_all_list",
+            url: "/item/all",
             method: "get"
         };
         $http.requestData(option).then(function(response) {

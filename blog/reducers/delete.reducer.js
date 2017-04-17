@@ -1,12 +1,13 @@
 import {
   CANCEL_DELETE,
-  CONFIRM_DELETE
+  DELETE_FAIL,
+  DELETE_SUCESS
 } from '../constants/action';
 
 const initialState = {
-    delete:true,
+    delete_home:true,
     cancel_delete:false,
-    confirm_delete:false
+    delete_success:false
 };
 
 let switchMap = {};
@@ -14,15 +15,22 @@ let switchMap = {};
 switchMap[CANCEL_DELETE] = (state,action) => {
 
     return Object.assign({}, state, {
-        delete: action.payload.delete,
+        delete_home: action.payload.delete_home,
         cancel_delete:action.payload.cancel_delete
     })
 };
 
-switchMap[CONFIRM_DELETE] = (state,action) => {
+switchMap[DELETE_FAIL] = (state,action) => {
     return Object.assign({}, state, {
-        delete: action.payload.delete,
-        confirm_delete:action.payload.confirm_delete
+        delete_home: action.payload.delete_home,
+        delete_success:action.payload.delete_success
+    })
+};
+
+switchMap[DELETE_SUCESS] = (state,action) => {
+    return Object.assign({}, state, {
+        delete_home: action.payload.delete_home,
+        delete_success:action.payload.delete_success
     })
 };
 

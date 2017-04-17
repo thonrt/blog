@@ -2,7 +2,7 @@
 import $ from "jquery"
 export default {
     requestData(option, successCallback, errorCallBack) {
-        var server = "http://localhost:8000";
+        var server = "http://localhost:8100";
         return $.ajax({
             url: server + option.url,
             dataType: 'json',

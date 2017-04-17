@@ -3,7 +3,7 @@ import {cancelDeleteAction,confirmDeleteAction} from "../actions/delete.action.j
 import {showPopupAction,closePopupAction} from "../actions/popup.action.js";
 import { connect } from 'react-redux';
 
-
+import {getAllListAction,setCurrentItemAction} from "../actions/list.action.js";
 class popup extends React.Component{
 
   constructor(props, context) {
@@ -11,6 +11,7 @@ class popup extends React.Component{
     this.cancelDeleteHandle = this.cancelDeleteHandle.bind(this);
     this.cancelOkHandler = this.cancelOkHandler.bind(this);
     this.confirmDeleteHandle = this.confirmDeleteHandle.bind(this);
+    this.deleteOkHandler = this.deleteOkHandler.bind(this);
   }
 
   cancelDeleteHandle(e){
@@ -18,6 +19,10 @@ class popup extends React.Component{
   }
 
   cancelOkHandler(e){
+    this.props.dispatch(getAllListAction());
+  }
+
+  deleteOkHandler(e){
     this.props.dispatch(closePopupAction());
   }
 
@@ -28,8 +33,8 @@ class popup extends React.Component{
 
   render(){
     let cancelDeleteDisplay = this.props.cancel_delete ?"block":"none";
-    let confirmDeleteDisplay = this.props.confirm_delete ?"block":"none";
-    let deleteDisplay = this.props.delete?"block":"none";
+    let confirmDeleteDisplay = this.props.delete_success ?"block":"none";
+    let deleteDisplay = this.props.delete_home?"block":"none";
     return (
       <div className="sweet-alert showSweetAlert visible" >
         <div className ="cancel_delete" style={{display:cancelDeleteDisplay}}>
@@ -62,7 +67,7 @@ class popup extends React.Component{
               <div className="sa-input-error"></div>
             </fieldset>
             <div className="sa-button-container">
-              <button className="confirm" tabindex="2">OK</button>
+              <button className="confirm" tabindex="2" onClick={this.deleteOkHandler}>OK</button>
             </div>
         </div>
 
@@ -92,9 +97,9 @@ class popup extends React.Component{
 // 获取state中的lists值
 const mapStateToProps = state => {
     return {
-        delete: state.delete.delete,
+        delete_home: state.delete.delete_home,
         cancel_delete:state.delete.cancel_delete,
-        confirm_delete:state.delete.confirm_delete,
+        delete_success:state.delete.delete_success,
         dataId:state.list.dataId
     }
 }
