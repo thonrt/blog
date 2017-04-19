@@ -23,7 +23,7 @@ class DashBoardIndex extends React.Component {
         <div className="layout-contentbox col-lg-10">
           <Header />
           <div className="popup" style={{display:display}}>
-            <Popup />
+            <Popup/>
           </div>
           {this.props.children}
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {cancelDeleteAction,confirmDeleteAction} from "../actions/delete.action.js";
+import {cancelDeleteAction,confirmDeleteAction,resetAction} from "../actions/delete.action.js";
 import {showPopupAction,closePopupAction} from "../actions/popup.action.js";
 import { connect } from 'react-redux';
 
@@ -19,11 +19,13 @@ class popup extends React.Component{
   }
 
   cancelOkHandler(e){
-    this.props.dispatch(getAllListAction());
+      this.props.dispatch(closePopupAction());
+      this.props.dispatch(resetAction());
   }
 
   deleteOkHandler(e){
     this.props.dispatch(closePopupAction());
+    this.props.dispatch(resetAction());
   }
 
   confirmDeleteHandle(e){

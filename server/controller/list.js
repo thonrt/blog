@@ -1,7 +1,6 @@
 
 function getAllList(req, res, next) {
-  // var list = req.session.list;
-  console.log(req.session);
+  var list = req.session.list;
 	if (!list) {
     list = [{
       id:0,
@@ -45,16 +44,16 @@ var deleteList = function(req, res, next) {
 	var clientList = req.session.list;
 	var clientId = req.params.dataId;
 	var newClientData = [];
-	console.log(clientId,clientList);
+
 	if (clientList && clientId) {
 		clientList.forEach(function(item) {
-			if (item.id !== clientId) {
+      var itemId = item.id +"";
+			if (itemId !== clientId) {
 				newClientData.push(item);
 			}
 		});
-		clientList = newClientData;
+		req.session.list = newClientData;
 	}
-
 
 	res.json({
 		"hint": "OK"

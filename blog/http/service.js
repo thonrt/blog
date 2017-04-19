@@ -8,6 +8,9 @@ export default {
             dataType: 'json',
             type: option.method || "GET",
             cache: false,
+            xhrFields: {
+              withCredentials: true
+            },
             data: option.data || null
         });
     }

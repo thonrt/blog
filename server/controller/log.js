@@ -8,6 +8,7 @@ var login = function(req, res, next) {
         userSession = {};
     }
     var postData = req.body;
+
     if (postData.username === "79976764@qq.com" && postData.password === "123456") {
         userSession.username = postData.username;
         userSession.password = postData.password;

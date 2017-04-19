@@ -4,21 +4,38 @@ var path = require("path");
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var port = 8000;
+var port = 8100;
 var app = express();
-var cors = require('cors');
+// var cors = require('cors');
 
 
 app.use("/", express.static(path.join(__dirname, '../../blog')));
 app.use(cookieParser());
 
+
+//session-store
+// var RedisStore = require('connect-redis')(session);
+// var options = {
+//       host: "localhost",
+//       port: 8090,
+//       db: "test_session",
+//       logErrors: true
+// };
+// app.use(session({
+//     store: new RedisStore(options),
+//     name: "",
+//     key : "",
+//     resave:"",
+//     saveUninitialized:"",
+//     secret: 'blog'
+// }));
+
 //session-store
 var LokiStore = require("connect-loki")(session);
+
 app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    store: new LokiStore(),
-    secret: 'blog'
+	store: new LokiStore(),
+	secret: 'crud'
 }));
 
 
@@ -29,10 +46,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(cors());
 app.use(routes);
 
-//error message in dev enverioment
 
 
 

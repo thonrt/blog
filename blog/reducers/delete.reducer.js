@@ -1,7 +1,8 @@
 import {
   CANCEL_DELETE,
   DELETE_FAIL,
-  DELETE_SUCESS
+  DELETE_SUCESS,
+  RESET_POPUP
 } from '../constants/action';
 
 const initialState = {
@@ -17,6 +18,16 @@ switchMap[CANCEL_DELETE] = (state,action) => {
     return Object.assign({}, state, {
         delete_home: action.payload.delete_home,
         cancel_delete:action.payload.cancel_delete
+    })
+};
+
+
+switchMap[RESET_POPUP] = (state,action) => {
+
+    return Object.assign({}, state, {
+        delete_home: action.payload.delete_home,
+        cancel_delete:action.payload.cancel_delete,
+        delete_success:action.payload.delete_success
     })
 };
 

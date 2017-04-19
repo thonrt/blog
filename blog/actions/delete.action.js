@@ -1,7 +1,8 @@
 import {
   CANCEL_DELETE,
   DELETE_SUCESS,
-  DELETE_FAIL
+  DELETE_FAIL,
+  RESET_POPUP
 } from '../constants/action';//引入action常量名
 
 import $http from '../http/service.js';
@@ -12,6 +13,17 @@ export function cancelDeleteAction(user){
     payload:{
       delete_home:false,
       cancel_delete:true
+    }
+  }
+}
+
+export function resetAction(user){
+  return {
+    type:RESET_POPUP,
+    payload:{
+      delete_home:true,
+      cancel_delete:false,
+      delete_success:false
     }
   }
 }
