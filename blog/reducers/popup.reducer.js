@@ -11,13 +11,15 @@ let switchMap = {};
 
 switchMap[OPEN_POPUP] = (state,action) =>{
   return Object.assign({},state,{
-    showingPopup:true
+    showingPopup:true,
+    actionType: action.payload.actionType
   });
 };
 
 switchMap[CLOSE_POPUP] = (state,action) =>{
   return Object.assign({},state,{
-    showingPopup:false
+    showingPopup:false,
+    actionType: action.payload.actionType
   });
 };
 

@@ -16,6 +16,7 @@ class DashBoardIndex extends React.Component {
 
   render() {
     let display = this.props.popup.showingPopup ?"block":"none";
+    let actionType = this.props.popup.actionType;
 
     return (
       <div>
@@ -23,7 +24,7 @@ class DashBoardIndex extends React.Component {
         <div className="layout-contentbox col-lg-10">
           <Header />
           <div className="popup" style={{display:display}}>
-            <Popup/>
+            <Popup actionType={actionType}/>
           </div>
           {this.props.children}
         </div>

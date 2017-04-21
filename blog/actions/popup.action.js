@@ -4,14 +4,20 @@ import {
 } from '../constants/action';
 
 
-export function showPopupAction(){
+export function showPopupAction(actionType){
   return {
-    type:OPEN_POPUP
+    type:OPEN_POPUP,
+    payload:{
+      actionType:actionType
+    }
   }
 }
 
-export function closePopupAction(){
+export function closePopupAction(actionType){
   return {
-    type:CLOSE_POPUP
+    type:CLOSE_POPUP,
+    payload:{
+      actionType:actionType
+    }
   };
 }

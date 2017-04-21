@@ -7,7 +7,8 @@ import {
 const initialState = {
     list: [],
     error: "",
-    dataId:null
+    dataId:null,
+    get_all_list:true
 };
 
 let switchMap = {};
@@ -15,19 +16,21 @@ let switchMap = {};
 switchMap[GET_ALL_LIST_SUCCESS] = (state,action) => {
 
     return Object.assign({}, state, {
-        list: action.payload.list
+        list: action.payload.list,
+        get_all_list: action.payload.get_all_list
     })
 };
 
 switchMap[GET_ALL_LIST_FAILED] = (state,action) => {
     return Object.assign({}, state, {
-        error: action.payload.error
+        error: action.payload.error,
+        get_all_list: action.payload.get_all_list
     })
 };
 
 switchMap[CURRETN_ITEM] = (state,action) => {
     return Object.assign({}, state, {
-        dataId: action.payload.dataId
+        item: action.payload.item
     })
 };
 

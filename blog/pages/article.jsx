@@ -8,14 +8,12 @@ import { connect } from 'react-redux';
 class SingleArticle extends React.Component{
 
 
-  handleUpdate(dataId){
 
-    }
-
-  handleDelete(e){
-    var dataId = e.target.getAttribute('data-id');
-    this.props.dispatch(setCurrentItemAction(dataId));
-    this.props.showPopup();
+  handleAction(e){
+    let dataId = this.props.article.id;
+    let actionType = e.target.getAttribute('type');
+    this.props.dispatch(setCurrentItemAction(this.props.article));
+    this.props.showPopup(actionType);
   }
   render(){
     let article = this.props.article;
@@ -30,8 +28,8 @@ class SingleArticle extends React.Component{
           </div>
           <div className="pull-right ibox-operate">
 
-            <button className="btn btn-primary btn-xs" type="button" onClick={()=>{this.handleUpdate()}} >修改</button>
-            <button className="btn btn-primary btn-xs" type="button" data-id={dataId} onClick={(e)=>{this.handleDelete(e)}}>删除</button>
+            <button className="btn btn-primary btn-xs" type="button" type="update" onClick={(e)=>{this.handleAction(e)}} >修改</button>
+            <button className="btn btn-primary btn-xs" type="button" type="delete" onClick={(e)=>{this.handleAction(e)}}>删除</button>
           </div>
           <div className="row" style={{clear:"both"}}>
             <div className="col-md-6">
@@ -48,6 +46,11 @@ class SingleArticle extends React.Component{
 
 class ArticleList extends React.Component{
 
+  constructor(props, context) {
+    super(props, context);
+    this.addItemHandle = this.addItemHandle.bind(this);
+  }
+
 
   //插入真是DOM之前调用
   componentWillMount(){
@@ -56,37 +59,55 @@ class ArticleList extends React.Component{
 
   componentWillReceiveProps(nextProps){
     let state = this.state || nextProps;
-    if(state.delete.delete_success){
+    if(state.delete && state.delete.delete_success){
       this.props.dispatch(getAllListAction());
-      this.setState({delete:{delete_success:false}});
+    }
+
+    if(state.updateItem&&state.updateItem.update_success){
+      this.props.dispatch(getAllListAction());
+    }
+
+
+    if(state.addItem&&state.addItem.add_success){
+      this.props.dispatch(getAllListAction());
     }
 
   }
 
   shouldComponentUpdate(nextProps,nextState){
-    let listLength = this.props.list.list.length;
-    let nextListLength = nextProps.list.list.length;
-    if(listLength !== nextListLength){
+    if(nextProps.list.get_all_list){
       return true;
     }
     return false;
   }
 
-  showPopup(){
-    this.dispatch(showPopupAction());
+  showPopup(actionType){
+    this.dispatch(showPopupAction(actionType));
   }
+
+  addItemHandle(e){
+    let actionType = e.currentTarget.getAttribute('type');
+    this.props.dispatch(showPopupAction(actionType));
+  }
+
   render(){
     let articleList = this.props.list.list;
     let showPopup = this.showPopup;
     let dispatch = this.props.dispatch;
     let deleteOption = this.props.delete;
 
-    if(articleList.length <1){
-      return null;
-    }
     return(
     <div className="col-lg-12">
-
+      <div className="mail-tools tooltip-demo m-t-md">
+          <div className="btn-group pull-right">
+            <button className="btn btn-white btn-sm">
+                <i className="fa fa-arrow-left">刷新</i>
+              </button>
+              <button className="btn btn-white btn-sm" type="add" onClick={this.addItemHandle}>
+                <i className="fa fa-arrow-right">添加</i>
+              </button>
+            </div>
+      </div>
       {
         articleList.map((item,index) =>{
           return (<SingleArticle article = {item} showPopup = {showPopup} dispatch={dispatch} key ={index} deleteOption={deleteOption}/>);
@@ -109,7 +130,9 @@ const mapStateToProps = state => {
         list: state.list,
         popup:state.popup,
         delete:state.delete,
-        dataId:state.dataId
+        dataId:state.dataId,
+        updateItem: state.updateItem,
+        addItem: state.addItem
     }
 }
 

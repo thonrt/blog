@@ -8,11 +8,11 @@ import {
 import $http from '../http/service.js';
 
 
-export function setCurrentItemAction(dataId){
+export function setCurrentItemAction(item){
   return {
     type:CURRETN_ITEM,
     payload:{
-      dataId:dataId
+      item:item
     }
   }
 }
@@ -42,7 +42,8 @@ function getAllListSuccessAction(list) {
     return {
         type: GET_ALL_LIST_SUCCESS,
         payload:{
-          list:list
+          list:list,
+          get_all_list: true
         }
     };
 }
@@ -50,6 +51,9 @@ function getAllListSuccessAction(list) {
 function getAllListFailedAction(error = '') {
     return {
         type: GET_ALL_LIST_FAILED,
-        payload: error
+        payload: {
+          error:error,
+          get_all_list:false
+        }
     };
 }

@@ -15,10 +15,14 @@ var middleWare =  function(req, res, next) {
 router.use(middleWare);
 
 router.route("/login").post(Log.login);
+router.route("/item")
+  .put(List.addList);
 
 
 router.route("/item/:dataId")
   .get(List.getAllList)
-  .delete(List.deleteList);
+  .delete(List.deleteList)
+  .post(List.updateList)
+  .put(List.addList);
 
 module.exports = router;

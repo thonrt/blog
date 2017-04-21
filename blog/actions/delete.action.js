@@ -43,13 +43,14 @@ function deleteSuccessAction(){
   return {
     type:DELETE_SUCESS,
     payload:{
+      get_all_list:true,
       delete_home:false,
       delete_success:true
     }
   }
 }
 
-export function confirmDeleteAction(dataId){
+export function itemDeleteAction(dataId){
   return (dispatch) => {
       let option = {
           url: "/item/" + dataId,

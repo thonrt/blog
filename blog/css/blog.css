@@ -32,7 +32,6 @@
 
 .layout-sidebar {
     position: absolute;
-    ;
     top: 0px;
     left: 0px;
     overflow: hidden;
@@ -127,18 +126,15 @@
    display: none;
 }
 .popup .sweet-alert{
-  position: relative;
-  left:50%;
-  top:40%;
-  display: block;
+  margin-top: 60px;
+  margin-left: 0;
+  top:100px;
+  left:40%;
 }
-.mask{
-  height: 834px;
-  width:100%;
-  /*background-color: #ccc;*/
-  display: none;
+.popup .sweet-alert input{
+    display: block;
+}
 
-}
 
 .about_me{
   overflow: hidden;

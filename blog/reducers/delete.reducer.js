@@ -6,6 +6,7 @@ import {
 } from '../constants/action';
 
 const initialState = {
+    get_all_list:false,
     delete_home:true,
     cancel_delete:false,
     delete_success:false
@@ -41,7 +42,8 @@ switchMap[DELETE_FAIL] = (state,action) => {
 switchMap[DELETE_SUCESS] = (state,action) => {
     return Object.assign({}, state, {
         delete_home: action.payload.delete_home,
-        delete_success:action.payload.delete_success
+        delete_success:action.payload.delete_success,
+        get_all_list:action.payload.get_all_list
     })
 };
 

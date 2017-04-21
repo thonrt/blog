@@ -1,4 +1,4 @@
-
+var uuid = require("node-uuid");
 function getAllList(req, res, next) {
   var list = req.session.list;
 	if (!list) {
@@ -40,6 +40,44 @@ function getAllList(req, res, next) {
 };
 
 
+function updateList(req,res,next){
+  var list = req.session.list;
+	var dataId = req.params.dataId;
+	var postData = req.body;
+
+
+		list.forEach(function(item) {
+      var itemId = item.id+"";
+			if (itemId === dataId) {
+				item.title = postData.title;
+				item.webSite = postData.webSite;
+				item.keyWords = postData.keyWords;
+			}
+		});
+		req.session.list = list;
+		res.json({
+			"hint": "ok"
+		});
+
+};
+
+function addList(req,res,next){
+    var list = req.session.list;
+    var postData = req.body;
+    console.log(postData);
+    var data = {
+      id: uuid.v1(),
+      title : postData.title,
+      webSite : postData.webSite,
+      keyWords : postData.keyWords
+    };
+    list.push(data);
+    req.session.list = list;
+    res.json({
+      "hint": "ok"
+    });
+};
+
 var deleteList = function(req, res, next) {
 	var clientList = req.session.list;
 	var clientId = req.params.dataId;
@@ -60,6 +98,8 @@ var deleteList = function(req, res, next) {
 	});
 };
 module.exports = {
+    addList:addList,
+    updateList:updateList,
     getAllList: getAllList,
     deleteList:deleteList
 };
